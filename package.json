@@ -1,14 +1,16 @@
 {
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.9.1",
-    "multer": "^2.2.0"
+  "name": "learning-platform-with-rag-ai-doubt-solver",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A learning platform with a RAG-powered AI doubt solver for students and mentors.",
+  "scripts": {
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "concurrently": "^9.1.2"
   }
 }

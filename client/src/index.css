@@ -1,111 +1,166 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@theme {
+  --font-display: 'Syne', sans-serif;
+  --font-editorial: 'Newsreader', Georgia, serif;
+  --font-sans: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  --color-canvas: #ECE8E3;
+  --color-canvas-card: #F5F2ED;
+  --color-void: #0D0D0D;
+  --color-void-card: #161616;
+  --color-void-elevated: #202020;
+  --color-ink-primary: #0D0D0D;
+  --color-ink-muted: #5C5853;
+  --color-archival-border: #C8C4BD;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+@layer utilities {
+  .font-display {
+    font-family: 'Syne', sans-serif;
+  }
+  .font-editorial {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+  .font-sans-telemetry {
+    font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+@layer base {
+  body {
+    background-color: #ECE8E3;
+    color: #0D0D0D;
+    min-height: 100vh;
+    font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  margin: 0;
+/* Dimensional Display Headline (SCHOLARIS "RESOLVE YOUR DOUBTS") */
+.scholaris-display-3d,
+.voyager-display-3d {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #0D0D0D;
+  text-shadow: 3px 3px 0px #C8C4BD, 6px 6px 0px rgba(13, 13, 13, 0.15);
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+.scholaris-display-light-3d,
+.voyager-display-light-3d {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #F0ECE8;
+  text-shadow: 3px 3px 0px #3D3B37, 6px 6px 0px rgba(0, 0, 0, 0.4);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* Vintage Paper & Ink Cards */
+.archival-card {
+  background: #F5F2ED;
+  border: 1px solid #C8C4BD;
+  box-shadow: 0 4px 20px -2px rgba(13, 13, 13, 0.05);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.void-card {
+  background: #0D0D0D;
+  border: 1px solid #2C2A26;
+  color: #F0ECE8;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5);
+}
+
+.void-card-glass {
+  background: rgba(13, 13, 13, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #2C2A26;
+  color: #F0ECE8;
+}
+
+/* Cosmic Void Organic Blob Mask */
+.cosmic-void-container {
+  background: #0D0D0D;
+  color: #F0ECE8;
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+
+/* Zero-Gravity Drifting Animations */
+@keyframes float-astronaut {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+@keyframes orbit-saturn {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
 }
-p {
-  margin: 0;
+
+@keyframes pulse-beam {
+  0%, 100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.95;
+  }
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+@keyframes drift-slow {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(4px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.animate-astronaut {
+  animation: float-astronaut 7s ease-in-out infinite;
+}
+
+.animate-saturn {
+  animation: orbit-saturn 9s ease-in-out infinite;
+}
+
+.animate-beam {
+  animation: pulse-beam 3s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift-slow 6s ease-in-out infinite;
+}
+
+/* Custom Archival Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ECE8E3;
+}
+::-webkit-scrollbar-thumb {
+  background: #BDB8B0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A857E;
 }

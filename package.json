@@ -6,7 +6,13 @@
   "scripts": {
     "install:client": "npm install --prefix client",
     "install:server": "npm install --prefix server",
-    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev": "concurrently -n \"server,client,rag\" -c \"blue,green,magenta\" \"npm run dev --prefix server\" \"npm run dev --prefix client\" \"npm run dev:rag\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:rag": "uv run --directory rag-service uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+    "start:rag": "uv run --directory rag-service uvicorn app.main:app --host 0.0.0.0 --port 8000",
+    "test:rag": "uv run --directory rag-service pytest tests/",
+    "test:client": "npm test --prefix client",
     "build": "npm run build --prefix client",
     "start": "npm run start --prefix server"
   },
